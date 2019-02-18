@@ -20,6 +20,22 @@ public class PawnTourApplication implements CommandLineRunner {
 		System.exit(0);
 	}
 
+	/**
+	 * This is starting point of the app, basically the app will try to find a path for the Pawn
+	 * in the chequerboard so that it visits each tile | square | point only once.
+	 * The implementation uses a Heuristic (Warnsdorff’s algorithm) to choose from all possible moves
+	 * the "best" one.
+	 *
+	 * The "best" next location for the Pawn is chosen by
+	 * 1. calculating the degree value for each possible location
+	 * 1.1 the degree means all possible location that can and are allowed to be visited
+	 * 2. then the app will choose the option with the lowest degree ( lowest number of possible locations )
+	 * 3. repeat the process until the Pawn cannot move anymore
+	 *
+	 * The advantage of using this Heuristic is that even when it is a difficult task the process will take linear time to complete
+	 *
+	 * A duration tracking is added to the output, most of the time the app takes 200 ms to complete
+	 */
 	private void start() {
 		//-- starting to get prerequisite data
 		int dimension = 10;
